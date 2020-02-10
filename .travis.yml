@@ -37,6 +37,15 @@ jobs:
       - NODE_VERSION=6-jessie
       - NPM_TARGET=lint
     - stage : npm_targets
+      name: "test 6-jessie"
+      install : skip
+      script:
+      - docker run $DOCKER_USERNAME/probot-hello:$NODE_VERSION-$(git rev-parse HEAD) npm run $NPM_TARGET
+      env:
+      - NODE_VERSION=6-jessie
+      - NPM_TARGET=coverage
+
+
     - stage: npm_targets
       name: "test 6-jessie"
       install : skip
@@ -55,3 +64,11 @@ jobs:
       - NODE_VERSION=6-jessie
       - NPM_TARGET=lint
     - stage : npm_targets
+      name: "test 6-jessie"
+      install : skip
+      script:
+      - docker run $DOCKER_USERNAME/probot-hello:$NODE_VERSION-$(git rev-parse HEAD) npm run $NPM_TARGET
+      env:
+      - NODE_VERSION=6-jessie
+      - NPM_TARGET=coverage
+    
