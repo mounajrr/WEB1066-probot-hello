@@ -3,7 +3,7 @@ services:
   - docker
 env:
   - NODE_VERSION=8-jessie
-  - NODE_VERSION=6-jessie
+
 
 
 
@@ -43,31 +43,4 @@ jobs:
       - docker run $DOCKER_USERNAME/probot-hello:$NODE_VERSION-$(git rev-parse HEAD) npm run $NPM_TARGET
       env:
       - NODE_VERSION=8-jessie
-      - NPM_TARGET=coverage
-
-
-    - stage: npm_targets
-      name: "test 6-jessie"
-      install : skip
-      script:
-      - docker run $DOCKER_USERNAME/probot-hello:$NODE_VERSION-$(git rev-parse HEAD) npm run $NPM_TARGET
-      env:
-      - NODE_VERSION=6-jessie
-      - NPM_TARGET=test
-    - stage: npm_targets
-      name: "test 6-jessie"
-      install : skip
-      script:
-      - docker run $DOCKER_USERNAME/probot-hello:$NODE_VERSION-$(git rev-parse HEAD) npm run $NPM_TARGET
-      if: branch = master
-      env:
-      - NODE_VERSION=6-jessie
-      - NPM_TARGET=lint
-    - stage : npm_targets
-      name: "test 6-jessie"
-      install : skip
-      script:
-      - docker run $DOCKER_USERNAME/probot-hello:$NODE_VERSION-$(git rev-parse HEAD) npm run $NPM_TARGET
-      env:
-      - NODE_VERSION=6-jessie
       - NPM_TARGET=coverage
